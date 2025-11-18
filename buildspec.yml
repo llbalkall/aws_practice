@@ -3,7 +3,8 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Building..."
+      - echo "Building static site..."
+      - zip -r site.zip *
 artifacts:
   files:
-    - '**/*'
+    - site.zip
