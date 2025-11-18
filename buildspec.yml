@@ -1,10 +1,12 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - pip install --upgrade awscli
   build:
     commands:
-      - echo "Building static site..."
-      - zip -r site.zip *
-artifacts:
-  files:
-    - site.zip
+      - echo "Deploying site to S3..."
+      - aws s3 cp . s3://cicd-demo-site/ --recursive
